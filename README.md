@@ -1,3 +1,10 @@
+An implementation of http://jsfiddle.net/staltz/8jFJH/48 fiddle featured in [The introduction to Reactive Programming you've been missing
+](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) that uses rxJS 6.x in a React framework utilising [functional hooks](https://reactjs.org/docs/hooks-intro.html) .
+
+Just a sample project to piss about with how it all works really.
+
+---
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
