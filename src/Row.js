@@ -1,8 +1,4 @@
 import React, {useState, useEffect} from "react";
-import {combineLatest, fromEvent, merge} from "rxjs";
-import {debounceTime, flatMap, map, startWith} from "rxjs/operators";
-import {fromPromise} from "rxjs/internal-compatibility";
-import {reject, resolve} from "q";
 import {getCloseButtonStream} from "./Observe";
 
 const suggestionStyle = {"padding": "5px"};
@@ -18,7 +14,7 @@ function Row(props) {
 
     const [name, setName] = useState("");
 
-    const rowId = "closeBtn"+props.btnId;
+    const rowId = "closeBtn" + props.btnId;
 
     useEffect(() => {
 
@@ -31,7 +27,7 @@ function Row(props) {
         return () => thing.unsubscribe();
 
         // an input of empty array means useEffect will only be called once
-    }, []);
+    }, [rowId]);
 
     return (
         <li style={suggestionStyle}>
