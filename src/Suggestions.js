@@ -5,14 +5,13 @@ const suggestionsStyle = {
     "border": "2px solid #ECECEC"
 };
 
-function Suggestions() {
+export default function Suggestions() {
+
     return (
         <ul style={suggestionsStyle}>
-            <Row/>
-            <Row/>
-            <Row/>
+            <Row btnId="1"/>
+            <Row btnId="2"/>
+            <Row btnId="3"/>
         </ul>
     )
 }
-
-export default Suggestions

@@ -1,4 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+import {combineLatest, fromEvent, merge} from "rxjs";
+import {debounceTime, flatMap, map, startWith} from "rxjs/operators";
+import {fromPromise} from "rxjs/internal-compatibility";
+import {reject, resolve} from "q";
+import {getCloseButtonStream} from "./Observe";
 
 const suggestionStyle = {"padding": "5px"};
 
@@ -9,11 +14,29 @@ const linkStyle = {
     "left": "5px"
 };
 
-function Row() {
+function Row(props) {
+
+    const [name, setName] = useState("");
+
+    const rowId = "closeBtn"+props.btnId;
+
+    useEffect(() => {
+
+        var thing = getCloseButtonStream(rowId)
+            .subscribe(json => {
+                setName(json.login)
+            });
+
+        // returned function will be called when the component unmounts
+        return () => thing.unsubscribe();
+
+        // an input of empty array means useEffect will only be called once
+    }, []);
+
     return (
         <li style={suggestionStyle}>
-            <a href="#" target="_blank" style={linkStyle}>this will not be displayed</a>
-            <a href="#" style={linkStyle}>x</a>
+            {name === undefined ? "LOADING..." : name}
+            <a href="#" id={rowId} style={linkStyle}>x</a>
         </li>
     )
 }

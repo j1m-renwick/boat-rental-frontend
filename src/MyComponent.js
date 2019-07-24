@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react";
-import observable from "./Observe";
+import {observable} from "./Observe";
 
 // var thing;
 //
