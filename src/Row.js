@@ -1,24 +1,15 @@
 import React, {useState, useEffect} from "react";
-import {getCloseButtonStream} from "./Observe";
-
-const suggestionStyle = {"padding": "5px"};
-
-const linkStyle = {
-    "display": "inline-block",
-    "position": "relative",
-    // "bottom": "15px",
-    "left": "5px"
-};
+import {getSuggestionStream} from "./Observe";
 
 function Row(props) {
 
-    const [name, setName] = useState("");
+    const [name, setName] = useState("LOADING...");
 
     const rowId = "closeBtn" + props.btnId;
 
     useEffect(() => {
 
-        var thing = getCloseButtonStream(rowId)
+        var thing = getSuggestionStream(rowId)
             .subscribe(json => {
                 setName(json.login)
             });
@@ -30,9 +21,7 @@ function Row(props) {
     }, [rowId]);
 
     return (
-        <li style={suggestionStyle}>
-            {name !== undefined ? name: "LOADING..."}
-            <a href="#" id={rowId} style={linkStyle}>x</a>
+        <li>{name}<a href="#" id={rowId} className="close">x</a>
         </li>
     )
 }
