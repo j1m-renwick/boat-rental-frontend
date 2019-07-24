@@ -31,7 +31,7 @@ function Row(props) {
 
     return (
         <li style={suggestionStyle}>
-            {name === undefined ? "LOADING..." : name}
+            {name !== undefined ? name: "LOADING..."}
             <a href="#" id={rowId} style={linkStyle}>x</a>
         </li>
     )
