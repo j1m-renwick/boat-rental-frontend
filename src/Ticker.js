@@ -3,7 +3,7 @@ import {observable} from "./Observe";
 
 // var thing;
 //
-// class MyComponent extends React.Component {
+// class Ticker extends React.Component {
 //
 //     constructor(props) {
 //         super(props);
@@ -29,27 +29,31 @@ import {observable} from "./Observe";
 // }
 
 
-function MyComponent() {
+function Ticker() {
 
     // useState returns the messages value and the function hook to be used to set it
     const [messages, setMessages] = useState("starting...");
 
+    // this is the hook equivalent of the react lifecycle methods above (e.g. componentDidMount)
     useEffect(() => {
         var thing = observable
             .subscribe(message => setMessages(message));
 
-        // returned function will be called when the component unmounts
+        // returned function will be called when the effect is cleaned up (e.g. when the component unmounts)
         return () => thing.unsubscribe();
 
-        // an input of empty array means useEffect will only be called once
+        // an input of empty array means useEffect will only be called once (i.e. when componentDidMount)
     }, []);
 
-    return <div>
-        <ul>
-            <li>{messages}</li>
-        </ul>
-    </div>
+    return (
+        <div>
+            <b>BONUS STREAM</b>
+            <ul>
+                <li>{messages}</li>
+            </ul>
+        </div>
+    )
 
 }
 
-export default MyComponent
+export default Ticker

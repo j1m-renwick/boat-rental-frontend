@@ -1,16 +1,16 @@
 import React from "react";
 import './App.css';
-import MyComponent from "./MyComponent";
+import Ticker from "./Ticker";
 import Suggestions from "./Suggestions";
 import Header from "./Header";
 
 function App() {
 
     return (
-        <div className="body">
+        <div className="container">
             <Header/>
             <Suggestions/>
-            <MyComponent/>
+            <Ticker/>
         </div>
     );
 }
