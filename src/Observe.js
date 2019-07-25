@@ -1,6 +1,6 @@
 import {of} from "rxjs";
 import {combineLatest} from "rxjs";
-import {delay, map, concatMap, startWith, debounceTime} from 'rxjs/internal/operators';
+import {delay, map, concatMap, startWith, debounceTime, catchError} from 'rxjs/internal/operators';
 import {fromEvent} from 'rxjs';
 import {flatMap, tap, share} from "rxjs/operators";
 import {fromPromise} from "rxjs/internal-compatibility";
@@ -16,7 +16,7 @@ export function getSuggestionStream(rowId) {
             .pipe(
                 map(mergedData => {
                     let refreshData = mergedData[1];
-                    // console.dir(refreshData);
+                    console.dir(refreshData);
                     // console.log("REFRESH DATA USED BEGINS WITH ID: " + refreshData[0].login);
                     return refreshData[Math.floor(Math.random() * refreshData.length)];
                 })
@@ -48,7 +48,7 @@ export function getSuggestionStream(rowId) {
                         res => resolve(res.json()),
                         err => reject(err)))),
                 // THIS IS KEY!  without this, the stream will not be multicast to multiple close button subscribers
-                // (and turn from a cold stream to a hot stream)
+                // (will be a cold stream instead a hot stream)
                 // .. if you remove this, each close button will be associated with a separate API stream
                 share()
             );

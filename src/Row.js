@@ -11,7 +11,7 @@ function Row(props) {
 
         var subStream = getSuggestionStream(rowId)
             .subscribe(json => {
-                // console.log(json);
+                console.log(json);
                 setInfo(json)
             });
 
