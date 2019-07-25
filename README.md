@@ -3,6 +3,8 @@ An implementation of http://jsfiddle.net/staltz/8jFJH/48 fiddle featured in [The
 
 Just a sample project to piss about with how it all works really.
 
+![](gif.gif)
+
 ---
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
