@@ -45,7 +45,19 @@ export function getSuggestionStream(rowId) {
                 }),
                 flatMap(requestUrl =>
                     fromPromise(fetch(requestUrl).then(
-                        res => resolve(res.json()),
+                        res => {
+                            if(res.status === 200) {
+                                return resolve(res.json());
+                            } else {
+                                // this scenario deals with error responses (e.g. 403s from the github API after too many calls in an hour)
+                                return resolve(
+                                    [{
+                                        // awww yesh lovely hardcodinggggg
+                                        "login": "Encountered " + res.status + " error",
+                                        "avatar_url": "https://www.printsonwood.com/media/catalog/product/g/r/grumpy-cat-rainbow-square_PRINT-crop-1x1.jpg.thumbnail_7.jpg"
+                                    }])
+                            }
+                        },
                         err => reject(err)))),
                 // THIS IS KEY!  without this, the stream will not be multicast to multiple close button subscribers
                 // (will be a cold stream instead a hot stream)
