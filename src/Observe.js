@@ -1,8 +1,8 @@
-import {of} from "rxjs";
+import {interval, of} from "rxjs";
 import {combineLatest} from "rxjs";
-import {delay, map, concatMap, startWith, debounceTime, catchError} from 'rxjs/internal/operators';
+import {delay, map, concatMap, startWith} from 'rxjs/internal/operators';
 import {fromEvent} from 'rxjs';
-import {flatMap, tap, share} from "rxjs/operators";
+import {flatMap, tap, share, throttle} from "rxjs/operators";
 import {fromPromise} from "rxjs/internal-compatibility";
 import {reject, resolve} from "q";
 
@@ -37,7 +37,7 @@ export function getSuggestionStream(rowId) {
                 );
 
             singletonApiStream = refreshButtonStream.pipe(
-                debounceTime(500),
+                throttle(val => interval(1000)),
                 tap(ev => console.log("REFRESH STREAM")),
                 map(() => {
                     var randomOffset = Math.floor(Math.random() * 500);
