@@ -37,7 +37,7 @@ export function getSuggestionStream(rowId) {
                 );
 
             singletonApiStream = refreshButtonStream.pipe(
-                throttle(val => interval(1000)),
+                throttle(val => interval(500)),
                 tap(ev => console.log("REFRESH STREAM")),
                 map(() => {
                     var randomOffset = Math.floor(Math.random() * 500);

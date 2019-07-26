@@ -25,7 +25,7 @@ function Row(props) {
         <li>
             <div>
                 <img src={info.avatar_url}/>
-                <a href={info.html_url} target="_blank" className="username">{info.login}</a>
+                <a href={info.html_url} rel="noopener noreferrer" target="_blank" className="username">{info.login}</a>
             </div>
             {/*even though the IDE doesn't like this, React knows to look in the public folder for the image*/}
             <img id={rowId} src="/closeIcon.png"/>
