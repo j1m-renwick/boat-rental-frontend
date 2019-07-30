@@ -1,16 +1,29 @@
 import React from "react";
 import './App.css';
-import Ticker from "./Ticker";
-import Suggestions from "./Suggestions";
-import Header from "./Header";
+import SearchBox from "./SearchBox";
 
 function App() {
 
     return (
         <div className="container">
-            <Header/>
-            <Suggestions/>
-            <Ticker/>
+            <div className="bird-container bird-container--one">
+                <div className="bird bird--one"></div>
+            </div>
+            <div className="bird-container bird-container--two">
+                <div className="bird bird--two"></div>
+            </div>
+
+            <div className="bird-container bird-container--three">
+                <div className="bird bird--three"></div>
+            </div>
+
+            <div className="bird-container bird-container--four">
+                <div className="bird bird--four"></div>
+            </div>
+            <div className="logo">
+                <img alt="can't find logo" src="/logo.png"/>
+            </div>
+            <SearchBox/>
         </div>
     );
 }
