@@ -7,7 +7,7 @@ import {Dropper} from "./Dropper";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {harbourList, junkTypeList} from "./DropperOptions";
+import {harbourList, tripTypeList} from "./DropperOptions";
 
 export default function SearchBox() {
 
@@ -25,14 +25,14 @@ export default function SearchBox() {
                 <Row>
                     <InputGroup className="mb-3">
                         <Col>
-                            <DayPickerInput style={{"display": "block"}} formatDate={parseDate} placeholder="Date..."
+                            <DayPickerInput id="datePickerSearchBox" style={{"display": "block"}} formatDate={parseDate} placeholder="Date..."
                                             component={props => <FormControl {...props}/>}/>
                         </Col>
                         <Col>
-                            <Dropper placeholder="Harbour..." optionsList={harbourList}/>
+                            <Dropper id="HarbourSearchBox" placeholder="Harbour..." optionsList={harbourList}/>
                         </Col>
                         <Col>
-                            <Dropper placeholder="Trip Type..." optionsList={junkTypeList}/>
+                            <Dropper id="TripTypeSearchBox" placeholder="Trip Type..." optionsList={tripTypeList}/>
                         </Col>
                     </InputGroup>
                 </Row>

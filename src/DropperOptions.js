@@ -5,7 +5,7 @@ export const harbourList = [
     "Three Fathoms Cove"
 ];
 
-export const junkTypeList = [
+export const tripTypeList = [
     "Booze Cruise",
     "Sun Seeker",
     "Casino Royale",
