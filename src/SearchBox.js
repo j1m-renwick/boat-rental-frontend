@@ -1,22 +1,15 @@
 import React from "react";
 import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/es/FormControl";
-import DayPickerInput from 'react-day-picker/DayPickerInput';
 import 'react-day-picker/lib/style.css';
 import {Dropper} from "./Dropper";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import {harbourList, tripTypeList} from "./DropperOptions";
+import {harbourList, tripTypeList} from "./DropperData";
+import {subjectMap} from "./Streams";
+import DatePicker from "./DatePicker";
 
 export default function SearchBox() {
-
-    // TODO use a proper parsing library like moment.js
-    function parseDate(date, format, locale) {
-        var month = ["January", "February", "March", "April", "May", "June",
-            "July", "August", "September", "October", "November", "December"][date.getMonth()];
-        return date.getDate() + ' ' + month + ' ' + date.getFullYear();
-    }
 
     return (
         <div className="header">
@@ -25,14 +18,13 @@ export default function SearchBox() {
                 <Row>
                     <InputGroup className="mb-3">
                         <Col>
-                            <DayPickerInput id="datePickerSearchBox" style={{"display": "block"}} formatDate={parseDate} placeholder="Date..."
-                                            component={props => <FormControl {...props}/>}/>
+                            <DatePicker id="datePickerSearchBox" streamSubject={subjectMap["date"]}/>
                         </Col>
                         <Col>
-                            <Dropper id="HarbourSearchBox" placeholder="Harbour..." optionsList={harbourList}/>
+                            <Dropper id="HarbourSearchBox" placeholder="Harbour..." optionsList={harbourList} streamSubject={subjectMap["harbour"]}/>
                         </Col>
                         <Col>
-                            <Dropper id="TripTypeSearchBox" placeholder="Trip Type..." optionsList={tripTypeList}/>
+                            <Dropper id="TripTypeSearchBox" placeholder="Trip Type..." optionsList={tripTypeList} streamSubject={subjectMap["tripType"]}/>
                         </Col>
                     </InputGroup>
                 </Row>

@@ -2,6 +2,7 @@ import React from "react";
 import './App.css';
 import SearchBox from "./SearchBox";
 import Alert from "react-bootstrap/Alert";
+import MyAlert from "./MyAlert";
 
 function App() {
 
@@ -25,9 +26,10 @@ function App() {
                 <img alt="can't find logo" src="/logo.png"/>
             </div>
             <SearchBox/>
-            <Alert variant="primary">
-                Nothing's been searched for yet...
-            </Alert>
+            <MyAlert/>
+            {/*<Alert variant="primary">*/}
+            {/*    Nothing's been searched for yet...*/}
+            {/*</Alert>*/}
         </div>
     );
 }
