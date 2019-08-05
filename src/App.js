@@ -1,8 +1,8 @@
 import React from "react";
 import './App.css';
 import SearchBox from "./SearchBox";
-import Alert from "react-bootstrap/Alert";
 import MyAlert from "./MyAlert";
+import {ResultsScroll} from "./ResultsScroll";
 
 function App() {
 
@@ -27,9 +27,8 @@ function App() {
             </div>
             <SearchBox/>
             <MyAlert/>
-            {/*<Alert variant="primary">*/}
-            {/*    Nothing's been searched for yet...*/}
-            {/*</Alert>*/}
+            <br/>
+            <ResultsScroll/>
         </div>
     );
 }

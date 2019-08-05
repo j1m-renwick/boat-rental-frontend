@@ -12,7 +12,6 @@ export default function DatePicker(props) {
 
     return (
         <DayPickerInput id={props.id} style={{"display": "block"}} onDayChange={handleDateSelect} formatDate={(date, format, locale) => moment(date).format("DD MMMM YYYY")}
-                        placeholder="Date..."
-                        component={props => <FormControl {...props}/>}/>
+                        placeholder="Date..." dayPickerProps={{disabledDays: {before: new Date()}, fromMonth: new Date()}} component={props => <FormControl {...props}/>}/>
     )
 }

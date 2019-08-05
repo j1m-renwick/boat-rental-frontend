@@ -1,5 +1,7 @@
 import {combineLatest, Subject} from "rxjs";
-import {map, startWith} from "rxjs/operators";
+import {flatMap, map, share, startWith} from "rxjs/operators";
+import {fromPromise} from "rxjs/internal-compatibility";
+import {reject, resolve} from "q";
 
 export var subjectMap = {
     "harbour": new Subject(),
@@ -19,5 +21,14 @@ export var combinedStream = combineLatest([streamMap["date"], streamMap["harbour
     //     map(mergedData => {
     //         console.dir(mergedData);
     //         return mergedData;
-    //     })
+    //     }),
+    //     share()
     // );
+
+// trigger an api call each time one of the three streams fires
+// export var apiStream = combinedStream.pipe(
+//     flatMap(requestUrl =>
+//                     fromPromise(fetch("http://demo4136230.mockable.io/helloWorld").then(
+//                         res => resolve(res.json()),
+//                         err => reject(err)))))
+//     .subscribe(json => console.log(json));
