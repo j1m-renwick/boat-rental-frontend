@@ -1,13 +1,16 @@
+
+// Mapping API enums => pretty dropdown names
+
 export const harbourList = [
-    "Victoria Harbour",
-    "Tai Tam Harbour",
-    "Port Shelter",
-    "Three Fathoms Cove"
+    ["VICTORIA_HARBOUR", "Victoria Harbour"],
+    ["TAI_TAM_HARBOUR", "Tai Tam Harbour"],
+    ["PORT_SHELTER", "Port Shelter"],
+    ["THREE_FATHOMS_COVE", "Three Fathoms Cove"]
 ];
 
 export const tripTypeList = [
-    "Booze Cruise",
-    "Sun Seeker",
-    "Casino Royale",
-    "Max Relax"
+    ["BOOZE_CRUISE", "Booze Cruise"],
+    ["SUN_SEEKER", "Sun Seeker"],
+    ["CASINO_ROYALE", "Casino Royale"],
+    ["MAX_RELAX", "Max Relax"],
 ];

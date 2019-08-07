@@ -3,7 +3,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import ResultCard from "./ResultCard";
 import {reject, resolve} from "q";
 import {combinedStream} from "./Streams";
-import { UriBuilder } from 'uribuilder';
+import {UriBuilder} from 'uribuilder';
 
 
 export function ResultsScroll() {
@@ -14,9 +14,11 @@ export function ResultsScroll() {
     const [items, setItems] = useState([]);
     const [hasMore, setHasMore] = useState(true);
     const [dateParam, setDateParam] = useState(null);
+    const [harbourParam, setHarbourParam] = useState(null);
+
     const [apiUrl, setApiUrl] = useState(() => {
         let builder = UriBuilder.parse(BASE_URL);
-        builder.query.limit=LIMIT_PER_API_CALL_PARAM;
+        builder.query.limit = LIMIT_PER_API_CALL_PARAM;
         return builder.toString();
     });
 
@@ -24,10 +26,12 @@ export function ResultsScroll() {
 
         let stream = combinedStream.subscribe(data => {
             setDateParam(data[0]);
+            setHarbourParam(data[1]);
             setApiUrl(() => {
                 let builder = UriBuilder.parse(BASE_URL);
-                builder.query.limit=LIMIT_PER_API_CALL_PARAM;
-                builder.query.date=data[0];
+                builder.query.limit = LIMIT_PER_API_CALL_PARAM;
+                builder.query.date = data[0];
+                builder.query.harbour = data[1];
                 return builder.toString();
             });
             setItems([]);
@@ -41,7 +45,7 @@ export function ResultsScroll() {
 
     useEffect(() => {
         fetchData();
-    }, [dateParam]);
+    }, [dateParam, harbourParam]);
 
 
     function fetchData() {
@@ -58,11 +62,7 @@ export function ResultsScroll() {
                 } else {
                     setHasMore(false);
                 }
-                if(res.resources !== undefined) {
-                    setItems(items.concat(res.resources));
-                } else {
-                    setItems([]);
-                }
+                setItems(res.resources !== undefined ? items.concat(res.resources) : []);
             });
     };
 

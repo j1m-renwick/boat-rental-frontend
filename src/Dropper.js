@@ -11,7 +11,7 @@ export function Dropper(props) {
     function handleOptionClick(eventKey, e) {
         let text = e.target.text;
         setValue(text);
-        props.streamSubject.next(text);
+        props.streamSubject.next(eventKey);
     }
 
     return (
@@ -20,8 +20,7 @@ export function Dropper(props) {
                 as={props => <FormControl id={props.id} placeholder={placeholder} {...props} value={value}/>}
                 autoComplete="off"/>
             <Dropdown.Menu>
-                {props.optionsList.map(((val, key) => <Dropdown.Item key={key} eventKey={key}
-                                                                     onSelect={handleOptionClick}>{val}</Dropdown.Item>))}
+                {props.optionsList.map(((val, key) => <Dropdown.Item key={key} eventKey={val[0]} onSelect={handleOptionClick}>{val[1]}</Dropdown.Item>))}
             </Dropdown.Menu>
         </Dropdown>
     )
