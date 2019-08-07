@@ -1,19 +1,48 @@
-import React, {useState, useEffect} from "react";
+import React, {useEffect, useState} from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import ResultCard from "./ResultCard";
-import {response} from "./dummyResponse";
 import {reject, resolve} from "q";
+import {combinedStream} from "./Streams";
+import { UriBuilder } from 'uribuilder';
 
 
 export function ResultsScroll() {
 
+    const BASE_URL = "http://localhost:8080/trips";
+    const LIMIT_PER_API_CALL_PARAM = 2;
+
     const [items, setItems] = useState([]);
     const [hasMore, setHasMore] = useState(true);
-    const [apiUrl, setApiUrl] = useState("http://localhost:8080/trips?limit=2");
+    const [dateParam, setDateParam] = useState(null);
+    const [apiUrl, setApiUrl] = useState(() => {
+        let builder = UriBuilder.parse(BASE_URL);
+        builder.query.limit=LIMIT_PER_API_CALL_PARAM;
+        return builder.toString();
+    });
+
+    useEffect(() => {
+
+        let stream = combinedStream.subscribe(data => {
+            setDateParam(data[0]);
+            setApiUrl(() => {
+                let builder = UriBuilder.parse(BASE_URL);
+                builder.query.limit=LIMIT_PER_API_CALL_PARAM;
+                builder.query.date=data[0];
+                return builder.toString();
+            });
+            setItems([]);
+            setHasMore(true);
+        });
+
+        return () => stream.unsubscribe();
+
+    }, []);
+
 
     useEffect(() => {
         fetchData();
-    }, []);
+    }, [dateParam]);
+
 
     function fetchData() {
 
@@ -24,12 +53,16 @@ export function ResultsScroll() {
                 return resolve(res.json());
             }, err => reject(err))
             .then(res => {
-                if (res.next !== undefined) {
+                if(res.next !== undefined) {
                     setApiUrl(res.next);
                 } else {
                     setHasMore(false);
                 }
-                setItems(items.concat(res.resources));
+                if(res.resources !== undefined) {
+                    setItems(items.concat(res.resources));
+                } else {
+                    setItems([]);
+                }
             });
     };
 
