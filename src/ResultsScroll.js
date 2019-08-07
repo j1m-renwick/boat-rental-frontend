@@ -15,6 +15,7 @@ export function ResultsScroll() {
     const [hasMore, setHasMore] = useState(true);
     const [dateParam, setDateParam] = useState(null);
     const [harbourParam, setHarbourParam] = useState(null);
+    const [tripTypeParam, setTripTypeParam] = useState(null);
 
     const [apiUrl, setApiUrl] = useState(() => {
         let builder = UriBuilder.parse(BASE_URL);
@@ -27,11 +28,13 @@ export function ResultsScroll() {
         let stream = combinedStream.subscribe(data => {
             setDateParam(data[0]);
             setHarbourParam(data[1]);
+            setTripTypeParam(data[2]);
             setApiUrl(() => {
                 let builder = UriBuilder.parse(BASE_URL);
                 builder.query.limit = LIMIT_PER_API_CALL_PARAM;
                 builder.query.date = data[0];
                 builder.query.harbour = data[1];
+                builder.query.type = data[2];
                 return builder.toString();
             });
             setItems([]);
@@ -45,7 +48,7 @@ export function ResultsScroll() {
 
     useEffect(() => {
         fetchData();
-    }, [dateParam, harbourParam]);
+    }, [dateParam, harbourParam, tripTypeParam]);
 
 
     function fetchData() {
