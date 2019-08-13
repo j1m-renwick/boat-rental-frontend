@@ -1,5 +1,6 @@
 import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
+import {Link} from 'react-router-dom';
 import React, {useState} from "react";
 import Collapse from "react-bootstrap/Collapse";
 import "./ResultCard.css"
@@ -11,8 +12,8 @@ export default function ResultCard(props) {
     return (
         <Card border="info" key={props.index}>
             <Card.Header>
-                <div className="card-header-container">
-                    <div className="card-header-left-title">{props.data.name.toUpperCase()}</div>
+                <div className="flex-container">
+                    <div className="left-flex-item bold">{props.data.name.toUpperCase()}</div>
                     <div><b>Tickets Left:</b> {props.data.tickets}</div>
                 </div>
 
@@ -26,9 +27,16 @@ export default function ResultCard(props) {
                     esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt
                     in culpa qui officia deserunt mollit anim id est laborum.
                 </Card.Text>
-                <Button onClick={() => setOpen(!open)}
-                        aria-expanded={open}
-                        variant="outline-info">Details</Button>
+                <div className="flex-container">
+                    <div className="left-flex-item">
+                        <Button onClick={() => setOpen(!open)}
+                                aria-expanded={open}
+                                variant="outline-info">Details</Button>
+                    </div>
+                    <Link to="/newPage">
+                        <Button variant="success">Reserve</Button>
+                    </Link>
+                </div>
                 <Collapse in={open}>
                     <div>
                         <br/>
@@ -38,7 +46,6 @@ export default function ResultCard(props) {
                         </div>
                     </div>
                 </Collapse>
-
             </Card.Body>
         </Card>
     )
