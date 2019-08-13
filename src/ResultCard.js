@@ -35,7 +35,7 @@ export default function ResultCard(props) {
                     </div>
                     <Link to={{
                         pathname: '/newPage',
-                        index: props.index
+                        index: props.data.id
                     }}>
                         <Button variant="success">Reserve</Button>
                     </Link>

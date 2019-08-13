@@ -3,33 +3,21 @@ import './App.css';
 import SearchBox from "./SearchBox";
 import MyAlert from "./MyAlert";
 import {ResultsScroll} from "./ResultsScroll";
+import {AutoCloseToast} from "./AutoCloseToast";
+import Container from "react-bootstrap/Container";
+import Logo from "./Logo";
 
 function App() {
 
     return (
-        <div className="container">
-            <div className="bird-container bird-container--one">
-                <div className="bird bird--one"/>
-            </div>
-            <div className="bird-container bird-container--two">
-                <div className="bird bird--two"/>
-            </div>
-
-            <div className="bird-container bird-container--three">
-                <div className="bird bird--three"/>
-            </div>
-
-            <div className="bird-container bird-container--four">
-                <div className="bird bird--four"/>
-            </div>
-            <div className="logo">
-                <img alt="can't find logo" src="/logo.png"/>
-            </div>
+        <Container>
+            <Logo/>
             <SearchBox/>
+            {/*<AutoCloseToast/>*/}
             {/*<MyAlert/>*/}
             <br/>
             <ResultsScroll/>
-        </div>
+        </Container>
     );
 }
 
