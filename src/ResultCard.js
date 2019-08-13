@@ -2,16 +2,17 @@ import Card from "react-bootstrap/Card";
 import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 import Collapse from "react-bootstrap/Collapse";
+import "./ResultCard.css"
 
 export default function ResultCard(props) {
 
     const [open, setOpen] = useState(false);
 
     return (
-        <Card key={props.index}>
+        <Card border="info" key={props.index}>
             <Card.Header>
-                <div style={{"display": "flex", "alignItems":"center"}}>
-                    <div style={{"flex": "1", "fontFamily": "Impact, Charcoal, sans-serif"}}>{props.data.name.toUpperCase()}</div>
+                <div className="card-header-container">
+                    <div className="card-header-left-title">{props.data.name.toUpperCase()}</div>
                     <div><b>Tickets Left:</b> {props.data.tickets}</div>
                 </div>
 
