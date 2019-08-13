@@ -4,31 +4,33 @@ import Dropdown from "react-bootstrap/Dropdown";
 
 export function Dropper(props) {
 
-    const DEFAULT_EVENT_KEY="NONE_SELECTED";
-    let [value, setValue] = useState("");
+    const DEFAULT_EVENT_KEY = "NONE_SELECTED";
+    let [textValue, setTextValue] = useState(null);
 
     const placeholder = props.placeholder;
 
     function handleOptionClick(eventKey, e) {
-        let text = e.target.text;
-        if (eventKey === DEFAULT_EVENT_KEY) {
-            setValue(null);
-            props.streamSubject.next(null);
-        } else {
-            setValue(text);
-            props.streamSubject.next(eventKey);
+        let text = eventKey !== DEFAULT_EVENT_KEY ? e.target.text : null;
+        let streamValue = eventKey !== DEFAULT_EVENT_KEY ? eventKey : null;
+
+        if (textValue !== text) {
+            setTextValue(text);
+            props.streamSubject.next(streamValue);
         }
+
     }
 
     return (
         <Dropdown>
             <Dropdown.Toggle
-                as={props => <FormControl id={props.id} placeholder={placeholder} {...props} value={value}/>}
+                as={props => <FormControl id={props.id} placeholder={placeholder} {...props} value={textValue}/>}
                 autoComplete="off"/>
             <Dropdown.Menu>
-                <Dropdown.Item key={DEFAULT_EVENT_KEY} eventKey={DEFAULT_EVENT_KEY} onSelect={handleOptionClick}>All</Dropdown.Item>
-                <Dropdown.Divider />
-                {props.optionsList.map(((val, key) => <Dropdown.Item key={key} eventKey={val[0]} onSelect={handleOptionClick}>{val[1]}</Dropdown.Item>))}
+                <Dropdown.Item key={DEFAULT_EVENT_KEY} eventKey={DEFAULT_EVENT_KEY}
+                               onSelect={handleOptionClick}>All</Dropdown.Item>
+                <Dropdown.Divider/>
+                {props.optionsList.map(((val, key) => <Dropdown.Item key={key} eventKey={val[0]}
+                                                                     onSelect={handleOptionClick}>{val[1]}</Dropdown.Item>))}
             </Dropdown.Menu>
         </Dropdown>
     )
