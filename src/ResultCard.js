@@ -33,7 +33,10 @@ export default function ResultCard(props) {
                                 aria-expanded={open}
                                 variant="outline-info">Details</Button>
                     </div>
-                    <Link to="/newPage">
+                    <Link to={{
+                        pathname: '/newPage',
+                        index: props.index
+                    }}>
                         <Button variant="success">Reserve</Button>
                     </Link>
                 </div>
