@@ -1,7 +1,5 @@
 import {combineLatest, Subject} from "rxjs";
-import {flatMap, map, share, startWith} from "rxjs/operators";
-import {fromPromise} from "rxjs/internal-compatibility";
-import {reject, resolve} from "q";
+import {startWith} from "rxjs/operators";
 
 export var subjectMap = {
     "harbour": new Subject(),
