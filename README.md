@@ -1,9 +1,14 @@
-An implementation of http://jsfiddle.net/staltz/8jFJH/48 fiddle featured in [The introduction to Reactive Programming you've been missing
-](https://gist.github.com/staltz/868e7e9bc2a7b8c1f754) that uses rxJS 6.x in a React framework utilising [functional hooks](https://reactjs.org/docs/hooks-intro.html) .
+#Junk UI
 
-Just a sample project to piss about with how it all works really.
+An example React webpage that uses rxJS to trigger calls to the junk microservice. 
 
-![](gif.gif)
+### Setup
+
+- clone this repo
+- run `npm install` to install dependencies
+- run `npm start` to run the application on `localhost:3000` - you should see a webpage and, if the microservice is running as well, 
+you should be able to search for the different trips.  The sample trips appear under 25th August and 1st September 2019. 
+
 
 ---
 
