@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 import React, {useState} from "react";
 import Collapse from "react-bootstrap/Collapse";
 import "./ResultCard.css"
+import moment from "moment";
 
 export default function ResultCard(props) {
 
@@ -45,7 +46,7 @@ export default function ResultCard(props) {
                         <br/>
                         <div>
                             <p><b>Junk:</b> {props.data.junkName}</p>
-                            <p><b>Departure Time:</b> {new Date(props.data.departureDttm).toLocaleTimeString("uk")}</p>
+                            <p><b>Departure Time:</b> {moment(new Date(props.data.departureDttm)).format("hh:mm A")}</p>
                         </div>
                     </div>
                 </Collapse>

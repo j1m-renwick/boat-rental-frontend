@@ -12,7 +12,7 @@ export default function NewPage(props) {
             <div className="header">
                 <div>I'm a new page!</div>
                 <div>Trip Id: {props.location.index}</div>
-                <ReservationCountdown/>
+                <ReservationCountdown tripId={props.location.index}/>
             </div>
         </Container>
     )

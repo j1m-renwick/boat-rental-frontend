@@ -2,12 +2,18 @@
     font-family: sans-serif;
     background: #FFFFFF;
     height: 100vh;
+    background: none;
+}
+
+body {
+    background: rgb(255,111,105);
+    background: linear-gradient(90deg, rgba(255,111,105,0.7973564425770308) 0%, rgba(255,238,173,1) 50%, rgba(255,111,105,0.80015756302521) 100%);
+
 }
 
 .logo {
     text-align: center;
-    background: rgb(227,253,255);
-    background: radial-gradient(circle, rgba(227,253,255,1) 0%, rgba(255,255,255,1) 100%);
+    background: none;
 }
 
 h2 {
@@ -21,7 +27,7 @@ h2 {
 }
 
 .header {
-    background: #99C7CB;
+    background: #88D8B0;
     padding: 5px 15px 15px 10px;
 }
 
