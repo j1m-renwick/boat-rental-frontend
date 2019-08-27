@@ -6,7 +6,13 @@ import moment from "moment";
 export default function ReservationCountdown(props) {
 
     // TODO remove hardcoding
-    const apiUrl = "http://localhost:8080/reservations/reserve";
+    const API_URL = "http://localhost:8080/reservations/reserve";
+
+    const MAX_COUNTDOWN_SECONDS = 60;
+    const API_HEADERS = {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
+    };
 
     const [expiryTime, setExpiryTime] = useState(-1);
     const [ready, setReady] = useState(false);
@@ -14,16 +20,12 @@ export default function ReservationCountdown(props) {
     useEffect(() => {
 
         if (!ready) {
-            console.log("Calling: " + apiUrl);
+            console.log("Calling: " + API_URL);
             console.log("TRIP ID: " + props.tripId);
 
-            fetch(apiUrl, {
+            fetch(API_URL, {
                 method: "post",
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-
+                headers: API_HEADERS,
                 body: JSON.stringify({
                     tripId: props.tripId,
                     userId: "124",
@@ -44,7 +46,7 @@ export default function ReservationCountdown(props) {
     return (
 
         ready ?
-            <ReactCountdownClock maxSeconds={60}
+            <ReactCountdownClock maxSeconds={MAX_COUNTDOWN_SECONDS}
                                  seconds={expiryTime}
                                  color="#000"
                                  alpha={0.9}
