@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@j1m/rcc": "^1.0.0",
     "bootstrap": "^4.3.1",
     "moment": "^2.24.0",
     "react": "^16.9.0",
@@ -13,7 +14,8 @@
     "react-router-dom": "^5.0.1",
     "react-scripts": "3.0.1",
     "rxjs": "^6.5.2",
-    "uribuilder": "^1.0.5"
+    "uribuilder": "^1.0.5",
+    "q":"^1.5.1"
   },
   "scripts": {
     "start": "react-scripts start",

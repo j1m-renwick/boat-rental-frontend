@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {reject, resolve} from "q";
-import ReactCountdownClock from "react-countdown-clock";
+import ReactCountdownClock from "@j1m/rcc";
 import moment from "moment";
 
 export default function ReservationCountdown(props) {
