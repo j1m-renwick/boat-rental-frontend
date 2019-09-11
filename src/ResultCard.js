@@ -35,7 +35,7 @@ export default function ResultCard(props) {
                                 variant="outline-info">Details</Button>
                     </div>
                     <Link to={{
-                        pathname: '/newPage',
+                        pathname: '/reserve',
                         index: props.data.id
                     }}>
                         <Button variant="success">Reserve</Button>

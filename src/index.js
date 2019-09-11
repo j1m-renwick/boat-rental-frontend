@@ -2,15 +2,15 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
-import App from './App';
+import LandingPage from './LandingPage';
 import * as serviceWorker from './serviceWorker';
-import NewPage from "./NewPage";
+import ReservationBookingPage from "./ReservationBookingPage";
 
 const routing = (
     <Router>
         <div>
-            <Route exact path="/" component={App} />
-            <Route path="/newPage" component={NewPage}/>
+            <Route exact path="/" component={LandingPage} />
+            <Route path="/reserve" component={ReservationBookingPage}/>
         </div>
     </Router>
 );

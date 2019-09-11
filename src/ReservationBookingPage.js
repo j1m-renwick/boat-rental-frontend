@@ -4,14 +4,13 @@ import Logo from "./Logo";
 import ReservationCountdown from "./ReservationCountdown";
 
 
-export default function NewPage(props) {
+export default function ReservationBookingPage(props) {
 
     return (
         <Container>
             <Logo/>
             <div className="header">
-                <div>I'm a new page!</div>
-                <div>Trip Id: {props.location.index}</div>
+                <div>Holding reservation for trip Id: {props.location.index}</div>
                 <ReservationCountdown tripId={props.location.index}/>
             </div>
         </Container>

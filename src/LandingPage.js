@@ -5,7 +5,7 @@ import {ResultsScroll} from "./ResultsScroll";
 import Container from "react-bootstrap/Container";
 import Logo from "./Logo";
 
-function App() {
+function LandingPage() {
 
     return (
         <Container>
@@ -19,4 +19,4 @@ function App() {
     );
 }
 
-export default App;
+export default LandingPage;
