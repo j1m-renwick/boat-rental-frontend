@@ -2,9 +2,9 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import {BrowserRouter as Router, Route} from 'react-router-dom';
 import './index.css';
-import LandingPage from './LandingPage';
+import LandingPage from './pages/LandingPage';
 import * as serviceWorker from './serviceWorker';
-import ReservationBookingPage from "./ReservationBookingPage";
+import ReservationBookingPage from "./pages/ReservationBookingPage";
 
 const routing = (
     <Router>
