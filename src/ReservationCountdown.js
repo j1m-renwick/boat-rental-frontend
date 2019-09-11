@@ -2,6 +2,7 @@ import React, {useEffect, useState} from "react";
 import {reject, resolve} from "q";
 import ReactCountdownClock from "@j1m/rcc";
 import moment from "moment";
+import {withRouter} from 'react-router-dom'
 
 export default function ReservationCountdown(props) {
 
@@ -19,7 +20,7 @@ export default function ReservationCountdown(props) {
 
     useEffect(() => {
 
-        if (!ready) {
+        if(!ready) {
             console.log("Calling: " + API_URL);
             console.log("TRIP ID: " + props.tripId);
 
@@ -42,15 +43,17 @@ export default function ReservationCountdown(props) {
         }
     }, []);
 
+    const ClockToRender = withRouter(({history}) => (
+        <ReactCountdownClock maxSeconds={MAX_COUNTDOWN_SECONDS}
+                             seconds={expiryTime}
+                             color="#000"
+                             alpha={0.9}
+                             size={50}
+                             onComplete={() => history.push('/')}/>));
 
     return (
-
         ready ?
-            <ReactCountdownClock maxSeconds={MAX_COUNTDOWN_SECONDS}
-                                 seconds={expiryTime}
-                                 color="#000"
-                                 alpha={0.9}
-                                 size={50}/>
-        : <></>
+            <ClockToRender/>
+            : <></>
     )
 }
