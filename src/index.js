@@ -1,17 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router, Route} from 'react-router-dom';
+import {BrowserRouter as Router, Route, Switch} from 'react-router-dom';
 import './index.css';
 import LandingPage from './pages/LandingPage';
 import * as serviceWorker from './serviceWorker';
 import ReservationBookingPage from "./pages/ReservationBookingPage";
+import LoginPage from "./pages/LoginPage";
+import NavigationBar from "./NavigationBar";
+import Logo from "./Logo";
+import Container from "react-bootstrap/Container";
 
 const routing = (
     <Router>
-        <div>
-            <Route exact path="/" component={LandingPage} />
-            <Route path="/reserve" component={ReservationBookingPage}/>
-        </div>
+        <NavigationBar/>
+        <Container>
+            <Logo/>
+            <Switch>
+                <Route exact path="/" component={LandingPage}/>
+                <Route path="/reserve" component={ReservationBookingPage}/>
+                <Route path="/login" component={LoginPage}/>
+            </Switch>
+        </Container>
     </Router>
 );
 

@@ -14,7 +14,7 @@ export default function SearchBox() {
     return (
         <div className="header">
             <Form>
-                <h5 className="header-title">PICK YOUR TRIP</h5>
+                <h5 className="header-title">PLAN YOUR TRIP</h5>
                 <Row>
                     <InputGroup className="mb-3">
                         <Col>
