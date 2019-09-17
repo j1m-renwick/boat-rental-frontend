@@ -8,14 +8,17 @@ export function Dropper(props) {
     let [textValue, setTextValue] = useState(null);
 
     const placeholder = props.placeholder;
+    const streamSubject = props.streamSubject;
 
     function handleOptionClick(eventKey, e) {
         let text = eventKey !== DEFAULT_EVENT_KEY ? e.target.text : null;
-        let streamValue = eventKey !== DEFAULT_EVENT_KEY ? eventKey : null;
 
         if (textValue !== text) {
             setTextValue(text);
-            props.streamSubject.next(streamValue);
+            if (streamSubject !== undefined) {
+                let streamValue = eventKey !== DEFAULT_EVENT_KEY ? eventKey : null;
+                streamSubject.next(streamValue);
+            }
         }
 
     }

@@ -5,10 +5,13 @@ import React, {useState} from "react";
 import Collapse from "react-bootstrap/Collapse";
 import "./ResultCard.css"
 import moment from "moment";
+import NumericInput from 'react-numeric-input';
 
 export default function ResultCard(props) {
 
     const [open, setOpen] = useState(false);
+
+    const [quantity, setQuantity] = useState(1);
 
     return (
         <Card border="info" key={props.index}>
@@ -34,9 +37,13 @@ export default function ResultCard(props) {
                                 aria-expanded={open}
                                 variant="outline-info">Details</Button>
                     </div>
+                    <div style={{marginRight: "10px", width:"100px"}}>
+                        <NumericInput id="myTest" className="form-control" value={quantity} min={1} max={10} strict onChange={(value) => setQuantity(value)}/>
+                    </div>
                     <Link to={{
                         pathname: '/reserve',
-                        index: props.data.id
+                        index: props.data.id,
+                        quantity: quantity
                     }}>
                         <Button variant="success">Reserve</Button>
                     </Link>

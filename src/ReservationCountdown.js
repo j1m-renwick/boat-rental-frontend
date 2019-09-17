@@ -30,7 +30,7 @@ export default function ReservationCountdown(props) {
                 body: JSON.stringify({
                     tripId: props.tripId,
                     userId: "124",
-                    quantity: "14"
+                    quantity: props.quantity
                 })
             })
                 .then(res => {
