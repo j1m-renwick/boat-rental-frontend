@@ -13,6 +13,11 @@ export default function ResultCard(props) {
 
     const [quantity, setQuantity] = useState(1);
 
+    const numberDropdownStyling = {
+        marginRight: "10px",
+        width: "100px"
+    };
+
     return (
         <Card border="info" key={props.index}>
             <Card.Header>
@@ -37,8 +42,10 @@ export default function ResultCard(props) {
                                 aria-expanded={open}
                                 variant="outline-info">Details</Button>
                     </div>
-                    <div style={{marginRight: "10px", width:"100px"}}>
-                        <NumericInput className="form-control" value={quantity} min={1} max={Math.min(10, props.data.tickets)} strict onChange={(value) => setQuantity(value)}/>
+                    <div style={numberDropdownStyling}>
+                        <NumericInput className="form-control" value={quantity} min={1}
+                                      max={Math.min(10, props.data.tickets)} strict
+                                      onChange={(value) => setQuantity(value)}/>
                     </div>
                     <Link to={{
                         pathname: '/reserve',
