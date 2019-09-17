@@ -38,7 +38,7 @@ export default function ResultCard(props) {
                                 variant="outline-info">Details</Button>
                     </div>
                     <div style={{marginRight: "10px", width:"100px"}}>
-                        <NumericInput id="myTest" className="form-control" value={quantity} min={1} max={10} strict onChange={(value) => setQuantity(value)}/>
+                        <NumericInput className="form-control" value={quantity} min={1} max={Math.min(10, props.data.tickets)} strict onChange={(value) => setQuantity(value)}/>
                     </div>
                     <Link to={{
                         pathname: '/reserve',
