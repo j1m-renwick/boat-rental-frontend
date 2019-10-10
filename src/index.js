@@ -13,6 +13,7 @@ import Container from "react-bootstrap/Container";
 const routing = (
     <Router>
         <NavigationBar/>
+        <div style={{"height": "70px"}}/>
         <Container>
             <Logo/>
             <Switch>

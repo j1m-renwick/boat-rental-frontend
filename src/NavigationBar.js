@@ -10,7 +10,7 @@ export default function NavigationBar() {
     };
 
     return (
-        <Navbar bg="dark" variant="dark">
+        <Navbar bg="dark" variant="dark" fixed="top">
             <Link to="/">
                 <Navbar.Brand>JUNKLYFE</Navbar.Brand>
             </Link>
